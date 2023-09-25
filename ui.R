@@ -30,6 +30,19 @@ ui <- fluidPage(
                plotOutput("grafica")
              ),
              title = "Gráfica de pie"
-    )
+    ),
+    tabPanel("URL",
+             titlePanel("Titanic Dataset Analysis"),
+             sidebarLayout(
+               sidebarPanel(
+                 selectInput("pclass", "Clase de pasajero:",
+                             choices = unique(titanic$Pclass)),
+                 sliderInput("age", "Edad:", min = 0, max = 100, value = c(0, 100)),
+                 textInput("url_param", 'link')
+               ),
+               mainPanel(
+                 plotOutput("titanicPlot")
+               )
+             ))
   )
 )
